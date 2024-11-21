@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - BookMyApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Book My App</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="appointment.html">Book Appointment</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="appointment-form">
+        <h1>Book Your Appointment</h1>
+        <form id="appointmentForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date">Select Appointment Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Select Time Slot:</label>
+            <select id="time" name="time" required>
+                <option value="">Select Time</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+            </select>
+
+            <button type="submit" class="cta-button">Book Appointment</button>
+        </form>
+
+        <!-- Confirmation Message (Initially Hidden) -->
+        <div id="confirmationMessage" style="display: none;"><br>
+            <h2>Appointment Confirmed!</h2><br>
+            <p>Your appointment has been successfully booked. We will send further details to your email shortly.</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br><br><br>
+        </div>
+    </section>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // Check if all fields are filled
+            if (name && email && date && time) {
+                // Show the confirmation message
+                document.getElementById('confirmationMessage').style.display = 'block';
+
+                // Hide the form after booking
+                document.getElementById('appointmentForm').style.display = 'none';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
